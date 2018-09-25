@@ -6,5 +6,5 @@ def allblogs(request):
     plogs=plog.objects
     return render(request,"plog/home.html",{"plogs":plogs})
 def viewplog(request,blog_id):
-    blog_title=get_object_or_404(plog,pk=blog_id).title
-    return render(request,"plog/viewplog.html",{"blog_title":blog_title})
+    blog=get_object_or_404(plog,pk=blog_id)
+    return render(request,"plog/viewplog.html",{"blog":blog})
