@@ -10,6 +10,8 @@ pillow = "==5.2.0"
 "psycopg2-binary" = "==2.7.5"
 pytz = "==2018.5"
 whitenoise = "*"
+dj-database-url = "*"
+python-decouple = "*"
 
 [dev-packages]
 
