@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import dj_database_url
 from decouple import config
+import dj_database_url
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -21,12 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_sdj*2hw74uppx%@b+)v4q7qk#s4c+lylvyp@islnk5t^&5as!'
+SECRET_KEY=config('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG=config('DEBUG',defaul=True,cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS',cast= lambda v : [s.strip() for s in v.split(',')])
 
 
 # Application definition
@@ -79,10 +81,12 @@ WSGI_APPLICATION = 'protofilo.wsgi.application'
 
 DATABASES = {
     'default': {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    ),
-        'HOST':'127.0.0.1',
+        'default':dj_database_url.config(default=config('DATABASE_URL'))
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'USER':config('DB_USER'),
+        'PASSWORD':config('DB_USER'),
+        'HOST':config('DB_HOST'),
         'PORT':'5432'
     }
 }
