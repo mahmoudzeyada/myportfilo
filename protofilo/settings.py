@@ -26,7 +26,7 @@ SECRET_KEY=config('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=config('DEBUG',default=True,cast=bool)
+DEBUG=config('DEBUG',cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS',cast= lambda v : [s.strip() for s in v.split(',')])
 
@@ -88,7 +88,7 @@ DATABASES = {
         'PASSWORD':config('DB_USER'),
         'HOST':config('DB_HOST'),
         'PORT':'5432'
-    
+
 }
 
 
