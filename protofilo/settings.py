@@ -81,6 +81,7 @@ WSGI_APPLICATION = 'protofilo.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
+'default':{
 
         'default':dj_database_url.config(default=config('DATABASE_URL')),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -90,6 +91,7 @@ DATABASES = {
         'HOST':config('DB_HOST'),
         'PORT':'5432'
 
+}
 }
 
 
